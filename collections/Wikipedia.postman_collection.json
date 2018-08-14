@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "f3fb1ef0-33be-29ce-4565-c80d3c534855",
+		"name": "Wikipedia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get content of the main page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json",
+					"protocol": "https",
+					"host": [
+						"en",
+						"wikipedia",
+						"org"
+					],
+					"path": [
+						"w",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "query"
+						},
+						{
+							"key": "titles",
+							"value": "Main%20Page"
+						},
+						{
+							"key": "prop",
+							"value": "revisions"
+						},
+						{
+							"key": "rvprop",
+							"value": "content"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				},
+				"description": "Get main page"
+			},
+			"response": []
+		},
+		{
+			"name": "Get images from page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://en.wikipedia.org/w/api.php?action=query&titles=San_Francisco&prop=images&imlimit=20&format=json",
+					"protocol": "https",
+					"host": [
+						"en",
+						"wikipedia",
+						"org"
+					],
+					"path": [
+						"w",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "query"
+						},
+						{
+							"key": "titles",
+							"value": "San_Francisco"
+						},
+						{
+							"key": "prop",
+							"value": "images"
+						},
+						{
+							"key": "imlimit",
+							"value": "20"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=Jimi_Hendrix",
+					"protocol": "http",
+					"host": [
+						"en",
+						"wikipedia",
+						"org"
+					],
+					"path": [
+						"w",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "parse"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "prop",
+							"value": "text"
+						},
+						{
+							"key": "section",
+							"value": "0"
+						},
+						{
+							"key": "page",
+							"value": "Jimi_Hendrix"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=Paris&srprop=size|wordcount|snippet",
+					"protocol": "http",
+					"host": [
+						"en",
+						"wikipedia",
+						"org"
+					],
+					"path": [
+						"w",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "query"
+						},
+						{
+							"key": "list",
+							"value": "search"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "srsearch",
+							"value": "Paris"
+						},
+						{
+							"key": "srprop",
+							"value": "size|wordcount|snippet"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Open Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://en.wikipedia.org/w/api.php?action=opensearch&search=Paris&format=json",
+					"protocol": "https",
+					"host": [
+						"en",
+						"wikipedia",
+						"org"
+					],
+					"path": [
+						"w",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "opensearch"
+						},
+						{
+							"key": "search",
+							"value": "Paris"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
