@@ -1,0 +1,688 @@
+{
+	"info": {
+		"_postman_id": "ac620100-f3c7-41c6-b693-0cddb3e7f636",
+		"name": "Star Wars API",
+		"description": "All the Star Wars data you've ever wanted:\r\n    Planets, Spaceships, Vehicles, People, Films and Species\r\n\r\nFrom all SEVEN Star Wars films\r\n\r\nNow with The Force Awakens data!\r\n\r\nReference:  https://swapi.co/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get People",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/people/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"people",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get People 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/people/1",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"people",
+						"1"
+					]
+				},
+				"description": "A People resource is an individual person or character within the Star Wars universe."
+			},
+			"response": []
+		},
+		{
+			"name": "Get People Wookiee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/people/1/?format=wookiee",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"people",
+						"1",
+						""
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "wookiee"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get People Schema",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/people/schema",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"people",
+						"schema"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get People Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/people/?search=luke",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"people",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "luke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Films",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/films",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"films"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Films 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/films/1",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"films",
+						"1"
+					]
+				},
+				"description": "A Film resource is a single film."
+			},
+			"response": []
+		},
+		{
+			"name": "Starships",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/starships",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"starships"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Starships 9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/starships/9/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"starships",
+						"9",
+						""
+					]
+				},
+				"description": "A Starship resource is a single transport craft that has hyperdrive capability."
+			},
+			"response": []
+		},
+		{
+			"name": "Root",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						""
+					]
+				},
+				"description": "The Root resource provides information on all available resources within the API."
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/vehicles",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"vehicles"
+					]
+				},
+				"description": "A Vehicle resource is a single transport craft that does not have hyperdrive capability."
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicles 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/vehicles/4/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						"4",
+						""
+					]
+				},
+				"description": "A Vehicle resource is a single transport craft that does not have hyperdrive capability."
+			},
+			"response": []
+		},
+		{
+			"name": "Species",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/species",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"species"
+					]
+				},
+				"description": "A Species resource is a type of person or character within the Star Wars Universe."
+			},
+			"response": []
+		},
+		{
+			"name": "Species 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/species/3/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"species",
+						"3",
+						""
+					]
+				},
+				"description": "A Species resource is a type of person or character within the Star Wars Universe."
+			},
+			"response": []
+		},
+		{
+			"name": "Planets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/planets",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"planets"
+					]
+				},
+				"description": "A Planet resource is a large mass, planet or planetoid in the Star Wars Universe, at the time of 0 ABY."
+			},
+			"response": []
+		},
+		{
+			"name": "Planets 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/planets/1/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"planets",
+						"1",
+						""
+					]
+				},
+				"description": "A Planet resource is a large mass, planet or planetoid in the Star Wars Universe, at the time of 0 ABY."
+			},
+			"response": []
+		},
+		{
+			"name": "Planets Schema",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swapi.co/api/planets/schema",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"planets",
+						"schema"
+					]
+				},
+				"description": "A Planet resource is a large mass, planet or planetoid in the Star Wars Universe, at the time of 0 ABY."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a8e9dca7-c094-4544-9eb2-3fbc6f2b8c03",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e47f183f-1dad-4697-b721-95e5432cde1d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
