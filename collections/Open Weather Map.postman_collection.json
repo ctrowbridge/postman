@@ -1,0 +1,961 @@
+{
+	"info": {
+		"_postman_id": "460bfe1c-28f5-c9d8-385e-9a96c97c7f49",
+		"name": "Open Weather Map",
+		"description": "Tests for Open Weather Map",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "16 Day Forecast",
+			"item": [
+				{
+					"name": "Get 12 Day Forecast for London",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Body matches weatherdata\"] = responseBody.has(\"weatherdata\");",
+									"",
+									"var jsonObject = xml2Json(responseBody);",
+									"",
+									"tests[\"Location name is London\"] = jsonObject.weatherdata.location.name    === \"London\";",
+									"tests[\"Country name is US\"]      = jsonObject.weatherdata.location.country === \"GB\";",
+									"",
+									"var timeArray = jsonObject.weatherdata.forecast.time;",
+									"",
+									"tests[\"Number of days = 12\"] = timeArray.length == 12;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/forecast/daily?q=London&mode=xml&units=metric&cnt=12&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"forecast",
+								"daily"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "London"
+								},
+								{
+									"key": "mode",
+									"value": "xml"
+								},
+								{
+									"key": "units",
+									"value": "metric"
+								},
+								{
+									"key": "cnt",
+									"value": "12"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get 12 Day forecast for London"
+					},
+					"response": []
+				},
+				{
+					"name": "Get 14 Day Forecast for COS by LAT/Lon",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"tests[\"Location name is Colorado Springs\"] = jsonData.city.name === \"Colorado Springs\";",
+									"tests[\"Country name is US\"]                = jsonData.city.country === \"US\";",
+									"tests[\"Count is 14\"]                       = jsonData.cnt === 14;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/forecast/daily?lat=38.846127&lon=-104.800644&cnt=14&cnt=12&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"forecast",
+								"daily"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "38.846127"
+								},
+								{
+									"key": "lon",
+									"value": "-104.800644"
+								},
+								{
+									"key": "cnt",
+									"value": "14"
+								},
+								{
+									"key": "cnt",
+									"value": "12"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get 14 day forecast for Colorado Springs by lat/lon"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5 Day Forecast",
+			"item": [
+				{
+					"name": "Get 5 Day Forecast for London",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Body matches weatherdata\"] = responseBody.has(\"weatherdata\");",
+									"",
+									"var jsonObject = xml2Json(responseBody);",
+									"",
+									"tests[\"Location name is London\"] = jsonObject.weatherdata.location.name    === \"London\";",
+									"tests[\"Country name is US\"]      = jsonObject.weatherdata.location.country === \"US\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "api.openweathermap.org/data/2.5/forecast?q=London,us&mode=xml&appid={{apid}}",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"forecast"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "London,us"
+								},
+								{
+									"key": "mode",
+									"value": "xml"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get 5 Day forecoast for London"
+					},
+					"response": []
+				},
+				{
+					"name": "Get 5 Day Forecast for Bad Cidy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"",
+									"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
+									"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "api.openweathermap.org/data/2.5/forecast?q=UUUUUUUUUUUU&mode=xml&appid={{apid}}",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"forecast"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "UUUUUUUUUUUU"
+								},
+								{
+									"key": "mode",
+									"value": "xml"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get 5 Day forecoast for bad city"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Current Weather Data",
+			"item": [
+				{
+					"name": "Get Weather for Bad Station",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Return code is 404\"] = jsonData.cod === \"404\";",
+									"tests[\"Error Message is Not Found\"] = jsonData.message === \"Error: Not found\";",
+									"",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/station?id=29584&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"station"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "29584"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Query weather for non-existing weather station"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Weather for London",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"console.log(\"***** \" + jsonData.weather[0].id);",
+									"tests[\"ID == 800\"] = jsonData.weather[0].id === 800;",
+									"tests[\"name == London\"] = jsonData.name === \"London\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/weather?q=London&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "London"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get Weather (London)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Weather by ZIP code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Response time is less than 500ms\"] = responseTime < 500;",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Name is Black Forest\"] = jsonData.name === \"Black Forest\";",
+									"tests[\"ID is 5414069\"] = jsonData.id === 5414069;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/weather?zip=80106,us&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "zip",
+									"value": "80106,us"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get Weather (Black Forest ZIP)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Weather for Denver",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/weather?q=Denver&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Denver"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get weather (Denver)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Weather by Lat/Lon",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Response time is less than 500ms\"] = responseTime < 500;",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Name is Black Forest\"] = jsonData.name === \"Black Forest\";",
+									"tests[\"ID is 5414069\"] = jsonData.id === 5414069;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/weather?lat=38.96&lon=-104.78&units=imperial&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "38.96"
+								},
+								{
+									"key": "lon",
+									"value": "-104.78"
+								},
+								{
+									"key": "units",
+									"value": "imperial"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get Weather (lat/lon)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UV Index",
+			"item": [
+				{
+					"name": "Get UV index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"tests[\"Location Latitidue ~  40.75\"] = (jsonData.location.latitude - 40.7)  < 0.5;",
+									"tests[\"Location Longitude ~ -74.25\"] = (jsonData.location.longitude + 74.2) < 0.5;",
+									"",
+									"tests[\"Time contains '2016-03'\"] = jsonData.time.includes(\"2016-03\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/v3/uvi/40.7,-74.2/2016-03-01Z.json?appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"v3",
+								"uvi",
+								"40.7,-74.2",
+								"2016-03-01Z.json"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get UV index"
+					},
+					"response": []
+				},
+				{
+					"name": "Get UV Index with Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseCode.code);",
+									"",
+									"tests[\"Status code is 400\"] = responseCode.code === 400;",
+									"",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"message contains 'wrong format of time'\"] = jsonData.message.includes(\"wrong format of time\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/v3/uvi/40.7,-74.2/2016-01.json?appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"v3",
+								"uvi",
+								"40.7,-74.2",
+								"2016-01.json"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get UV Index with error (bad time format)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get UV Index by Lat/Lon & Time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"console.log(jsonData.time);",
+									"tests[\"Time contains '2016-01'\"] = jsonData.time.includes(\"2016-01\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/v3/uvi/40.7,-74.2/2016-01Z.json?appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"v3",
+								"uvi",
+								"40.7,-74.2",
+								"2016-01Z.json"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get UV Index"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Weather Stations",
+			"item": [
+				{
+					"name": "Get Weather Stations with Bad ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseCode.code);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"tests[\"Message is 'Error: Not found'\"] = jsonData.message === \"Error: Not found\";",
+									"tests[\"Error code = '404'\"]            = jsonData.cod     === \"404\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/station?id=99999&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"station"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "99999"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get Weather Station (Not found)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Weather Station in Box",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Latitude in Bounds\"] = jsonData.list[0].coord.lat > 8.87 && jsonData.list[0].coord.lat < 65.21;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/box/station?cluster=no&cnt=200&format=json&bbox=8.87,49.07,65.21,61.26,6&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"box",
+								"station"
+							],
+							"query": [
+								{
+									"key": "cluster",
+									"value": "no"
+								},
+								{
+									"key": "cnt",
+									"value": "200"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "bbox",
+									"value": "8.87,49.07,65.21,61.26,6"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get Weather Station inbox"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Weather Station by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"tests[\"Station ID = 4880\"] = jsonData.station.id === 4880;",
+									"tests[\"Station Name = EDDE\"] = jsonData.station.name === \"EDDE\";",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/station?id=4880&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"station"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4880"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get Weather Station"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Weather Station by Lat/Lon",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"console.log(jsonData[0])",
+									"console.log(jsonData.length)",
+									"",
+									"tests[\"Station ID = 542\"] = jsonData[0].station.id === 542;",
+									"tests[\"Station Name = KCOS\"] = jsonData[0].station.name === \"KCOS\";",
+									"",
+									"tests[\"Station Latitude in range\"]  = (jsonData[0].station.coord.lat - 38.846127) < 0.1;",
+									"tests[\"Station Longitude in range\"] = (jsonData[0].station.coord.lon + 104.800644) < 0.1;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/station/find?lat=38.846127&lon=-104.800644&cnt=30&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"station",
+								"find"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "38.846127"
+								},
+								{
+									"key": "lon",
+									"value": "-104.800644"
+								},
+								{
+									"key": "cnt",
+									"value": "30"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Get Weather Station around a point"
+					},
+					"response": []
+				},
+				{
+					"name": "Weather Station by Lat/Lon & Count",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Return Cound == 2\"] = jsonData.length === 2"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://api.openweathermap.org/data/2.5/station/find?lat=42.904614&lon= -149.344559&cnt=2&appid={{apid}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"station",
+								"find"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "42.904614"
+								},
+								{
+									"key": "lon",
+									"value": " -149.344559"
+								},
+								{
+									"key": "cnt",
+									"value": "2"
+								},
+								{
+									"key": "appid",
+									"value": "{{apid}}"
+								}
+							]
+						},
+						"description": "Weather Stations around lat/lon, count provided"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
