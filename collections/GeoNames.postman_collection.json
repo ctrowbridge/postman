@@ -1,0 +1,750 @@
+{
+	"info": {
+		"_postman_id": "b8ef7aaa-b793-40a7-950e-eda2202fe4b5",
+		"name": "GeoNames",
+		"description": "The GeoNames geographical database covers all countries and contains over eleven million placenames that are available for download free of charge.\n\nReference:  http://www.geonames.org/export/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Earth Quakes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b3fa634-ea4c-4364-bac3-90d632f28f88",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"earthquakes\");",
+							"});",
+							"",
+							"pm.test(\"Number of rows\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    console.log(\"Number of rows = \" + jsonData.earthquakes.length);",
+							"    pm.expect(jsonData.earthquakes.length).to.eql(10);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/earthquakesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"earthquakesJSON"
+					],
+					"query": [
+						{
+							"key": "north",
+							"value": "44.1"
+						},
+						{
+							"key": "south",
+							"value": "-9.9"
+						},
+						{
+							"key": "east",
+							"value": "-22.4"
+						},
+						{
+							"key": "west",
+							"value": "55.2"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Earth Quakes (Colorado)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f54f7a2-9f5a-4c49-b214-4ca488b1eb6d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"earthquakes\");",
+							"});",
+							"",
+							"pm.test(\"Number of rows\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    console.log(\"Number of rows = \" + jsonData.earthquakes.length);",
+							"    pm.expect(jsonData.earthquakes.length).to.eql(20);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/earthquakesJSON?north=40&south=35&east=-22.4&west=109&maxRows=20&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"earthquakesJSON"
+					],
+					"query": [
+						{
+							"key": "north",
+							"value": "40"
+						},
+						{
+							"key": "south",
+							"value": "35"
+						},
+						{
+							"key": "east",
+							"value": "-22.4"
+						},
+						{
+							"key": "west",
+							"value": "109"
+						},
+						{
+							"key": "maxRows",
+							"value": "20"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b69e86b5-4411-4fc7-baa7-be61c230c816",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"geonames\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=en&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"citiesJSON"
+					],
+					"query": [
+						{
+							"key": "north",
+							"value": "44.1"
+						},
+						{
+							"key": "south",
+							"value": "-9.9"
+						},
+						{
+							"key": "east",
+							"value": "-22.4"
+						},
+						{
+							"key": "west",
+							"value": "55.2"
+						},
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weather Stations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "70037c2a-aaef-4e81-b171-6486ba20d81b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"weatherObservations\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/weatherJSON?north=44.1&south=0.0&east=-22.4&west=55.2&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"weatherJSON"
+					],
+					"query": [
+						{
+							"key": "north",
+							"value": "44.1"
+						},
+						{
+							"key": "south",
+							"value": "0.0"
+						},
+						{
+							"key": "east",
+							"value": "-22.4"
+						},
+						{
+							"key": "west",
+							"value": "55.2"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weather Stations - Colorado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e7caf5f-3fa5-449e-b421-b8d840f21ab2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"weatherObservations\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/weatherJSON?north=41&south=37&east=-102&west=-109&maxRows=50&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"weatherJSON"
+					],
+					"query": [
+						{
+							"key": "north",
+							"value": "41"
+						},
+						{
+							"key": "south",
+							"value": "37"
+						},
+						{
+							"key": "east",
+							"value": "-102"
+						},
+						{
+							"key": "west",
+							"value": "-109"
+						},
+						{
+							"key": "maxRows",
+							"value": "50"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weather ICAO - Colorado Springs Airport KCOS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ea2265a-9a7d-454f-ae4f-eab7ef936b69",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"weatherObservation\");",
+							"});",
+							"",
+							"pm.test(\"ICAO is KCOS\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.weatherObservation.ICAO).to.eql(\"KCOS\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/weatherIcaoJSON?ICAO=KCOS&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"weatherIcaoJSON"
+					],
+					"query": [
+						{
+							"key": "ICAO",
+							"value": "KCOS"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weather ICAO - Meadow Lake Airport (KFLY)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b7e54ac-aaf7-448b-b911-68bec3f4b282",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"weatherObservation\");",
+							"});",
+							"",
+							"pm.test(\"ICAO is KFLY\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.weatherObservation.ICAO).to.eql(\"KFLY\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/weatherIcaoJSON?ICAO=KFLY&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"weatherIcaoJSON"
+					],
+					"query": [
+						{
+							"key": "ICAO",
+							"value": "KFLY"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Nearby Weather",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6aa3cdb-a926-4186-b0ef-a8150cad3032",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"weatherObservation\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/findNearByWeatherJSON?lat= 39.032532&lng=-104.611647&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"findNearByWeatherJSON"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": " 39.032532"
+						},
+						{
+							"key": "lng",
+							"value": "-104.611647"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Nearby Weather - My House",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f340d4e9-698f-4aca-a18c-ac1830522f11",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"weatherObservation\");",
+							"});",
+							"",
+							"pm.test(\"Response from weather station KFLY\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.weatherObservation.ICAO).to.eql(\"KFLY\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/findNearByWeatherJSON?lat= 39.032532&lng=-104.611647&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"findNearByWeatherJSON"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": " 39.032532"
+						},
+						{
+							"key": "lng",
+							"value": "-104.611647"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.geonames.org/citiesJSON?north=40.0&south=35.0&east=0&west=30&lang=en&username={{username}}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/citiesJSON?north=40.0&south=35.0&east=0&west=30&lang=en&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"citiesJSON"
+					],
+					"query": [
+						{
+							"key": "north",
+							"value": "40.0"
+						},
+						{
+							"key": "south",
+							"value": "35.0"
+						},
+						{
+							"key": "east",
+							"value": "0"
+						},
+						{
+							"key": "west",
+							"value": "30"
+						},
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Postal Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2211e7ff-ec6b-4d0d-8da7-3c710f074b3a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"postalCodes\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/postalCodeSearchJSON?postalcode=9011&maxRows=10&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"postalCodeSearchJSON"
+					],
+					"query": [
+						{
+							"key": "postalcode",
+							"value": "9011"
+						},
+						{
+							"key": "maxRows",
+							"value": "10"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Postal Code - 80918",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e56d6e7-afac-413a-b5ed-cd589ebe1427",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"postalCodes\");",
+							"});",
+							"",
+							"pm.test(\"State is CO\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.postalCodes[0].adminCode1).to.eql(\"CO\");",
+							"});",
+							"",
+							"pm.test(\"County is El Paso\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.postalCodes[0].adminName2).to.eql(\"El Paso\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://api.geonames.org/postalCodeSearchJSON?postalcode=80918&maxRows=10&username={{username}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"geonames",
+						"org"
+					],
+					"path": [
+						"postalCodeSearchJSON"
+					],
+					"query": [
+						{
+							"key": "postalcode",
+							"value": "80918"
+						},
+						{
+							"key": "maxRows",
+							"value": "10"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e1d05566-1623-427c-872d-d530e667f516",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "fca97612-0e2f-41e5-9bad-fb1d3bd59a2a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
