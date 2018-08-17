@@ -8,6 +8,36 @@
 	"item": [
 		{
 			"name": "Get People",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "643dd7d3-843a-442f-aa4e-e4e712f3e8d0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"count\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"var person;",
+							"console.log(\"Number of people: \" + jsonData.count);",
+							"pm.test(\"Name is Luke Skywalter\", function () {",
+							"    pm.expect(jsonData.results[0].name).to.eql(\"Luke Skywalker\");",
+							"});",
+							"",
+							"for (i=0; i< 10; i++) {",
+							"    console.log((i + 1) + \": \" + jsonData.results[i].name);",
+							"}"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -34,18 +64,26 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "ac8bd25b-0b91-4b8d-8cdc-2db1de8d43ed",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
-							""
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"name\");",
+							"});",
+							"",
+							"",
+							"console.log(jsonData);",
+							"",
+							"pm.test(\"Name is Luke Skywalter\", function () {",
+							"    pm.expect(jsonData.name).to.eql(\"Luke Skywalker\");",
+							"});"
 						]
 					}
 				}
@@ -73,6 +111,23 @@
 		},
 		{
 			"name": "Get People Wookiee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1439711-daa1-4fff-b131-7e4012923ae4",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -102,6 +157,28 @@
 		},
 		{
 			"name": "Get People Schema",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "38bdc4a8-b38a-419a-a876-228e0dbffd2c",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"description\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -124,6 +201,30 @@
 		},
 		{
 			"name": "Get People Search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "840b2dfe-f210-4a02-ba6d-037f79b9ebb5",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"count\");",
+							"});",
+							"",
+							"pm.test(\"Name is Luke Skywalter\", function () {",
+							"    pm.expect(jsonData.results[0].name).to.eql(\"Luke Skywalker\");",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -156,16 +257,19 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "60f27dec-85ed-4641-99f6-c85dd77279dd",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
-							"var jsonData = JSON.parse(responseBody);",
 							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
-							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"count\");",
+							"});",
 							"",
 							""
 						]
@@ -197,18 +301,26 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "03d0c3c2-e5af-4004-ad28-4ebb0e945158",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
-							""
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"title\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Title is A New Hope\", function () {",
+							"    pm.expect(jsonData.title).to.eql(\"A New Hope\");",
+							"});",
+							"",
+							"console.log(jsonData);"
 						]
 					}
 				}
@@ -240,17 +352,19 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "75f10ec2-fe14-4b81-9c7c-821791ba62b9",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"count\");",
+							"});",
 							""
 						]
 					}
@@ -281,18 +395,26 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "625025c1-4bd8-440b-95fb-a3ee016fc013",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
-							""
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"name\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Name is Death Star\", function () {",
+							"    pm.expect(jsonData.name).to.eql(\"Death Star\");",
+							"});",
+							"",
+							"console.log(jsonData);"
 						]
 					}
 				}
@@ -325,17 +447,19 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "5b89eece-a603-47bf-8988-d22f7252b824",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"people\");",
+							"});",
 							""
 						]
 					}
@@ -367,17 +491,18 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "8e4b4a78-8e6f-4ab7-91e6-3b6432951222",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
-							"",
-							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"count\");",
+							"});",
 							""
 						]
 					}
@@ -409,17 +534,26 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "12450b83-265a-45d7-b2ed-fb26a6c64b2f",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"name\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Name is Sand Crawler\", function () {",
+							"    pm.expect(jsonData.name).to.eql(\"Sand Crawler\");",
+							"});",
+							"",
+							"console.log(jsonData);",
 							""
 						]
 					}
@@ -453,17 +587,19 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3511406a-609e-47a4-96cb-d5a6af3fcf2a",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"count\");",
+							"});",
 							""
 						]
 					}
@@ -495,17 +631,26 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "b050e2e0-651b-4ce7-bb48-f9545726d67f",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"name\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Name is Wookiee\", function () {",
+							"    pm.expect(jsonData.name).to.eql(\"Wookiee\");",
+							"});",
+							"",
+							"console.log(jsonData);",
 							""
 						]
 					}
@@ -539,17 +684,19 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "cc6ab107-cbd0-45f2-a87a-6b6f807c984d",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"count\");",
+							"});",
 							""
 						]
 					}
@@ -581,18 +728,26 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "37ba92fc-3424-4f21-b071-b89f025dd3f6",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
-							""
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"name\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Name is Wookiee\", function () {",
+							"    pm.expect(jsonData.name).to.eql(\"Tatooine\");",
+							"});",
+							"",
+							"console.log(jsonData);"
 						]
 					}
 				}
@@ -625,17 +780,19 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "928b365c-6f89-4393-a518-4eb209c57fa3",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"",
-							"",
-							"tests[\"Code == 404\"] = jsonData.cod    === \"404\";",
-							"tests[\"Message == 'Error: Not found city'\"] = jsonData.message === \"Error: Not found city\";",
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
 							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"description\");",
+							"});",
 							""
 						]
 					}
