@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "9b382e6f-57fe-42ac-b61e-b6352f610cb8",
+		"name": "Deck of Cards",
+		"description": "http://deckofcardsapi.com/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Shuffle the Deck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/deck/kt4ttiqxrkr5/draw/?count=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						"kt4ttiqxrkr5",
+						"draw",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Draw a Card",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/deck/new/shuffle/?deck_count=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						"new",
+						"shuffle",
+						""
+					],
+					"query": [
+						{
+							"key": "deck_count",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reshuffle the Cards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/deck/kt4ttiqxrkr5/shuffle/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						"kt4ttiqxrkr5",
+						"shuffle",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A Brand New Deck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/deck/new/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						"new",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Draw a Card from New Deck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/deck/0yt4xy4bfwur/draw/?count=5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						"0yt4xy4bfwur",
+						"draw",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Deck - Euchre",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "110520b3-53ee-4c26-911b-95753922ff77",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is successful\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/deck/new/shuffle/?cards=AS,KS,QS,JS,0S,9S,AD,KD,QD,JD,0D, 9D,AC,KC,QC,JC,0C,9C,AH,KH,QH,JH,0H,9H",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						"new",
+						"shuffle",
+						""
+					],
+					"query": [
+						{
+							"key": "cards",
+							"value": "AS,KS,QS,JS,0S,9S,AD,KD,QD,JD,0D, 9D,AC,KC,QC,JC,0C,9C,AH,KH,QH,JH,0H,9H"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Draw Cards for Euchre",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b4dcf949-8512-4bbb-904e-9959b0c2e03f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response includes results\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"cards\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/deck/mynk06fx7lv3/draw/?count=24",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						"mynk06fx7lv3",
+						"draw",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "24"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d94a4909-8bc1-4d0f-8c34-496b8139c3d2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d09a82f4-6732-4ee9-ad5b-a1445435aad4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1e2285c7-c419-4ece-8932-c39aa121ac61",
+			"key": "url",
+			"value": "http://deckofcardsapi.com/",
+			"type": "string"
+		}
+	]
+}
