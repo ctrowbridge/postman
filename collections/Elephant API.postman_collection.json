@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "b42abf2f-896f-42e7-9d4e-f0c6d30e4bef",
+		"name": "Elephant API",
+		"description": "Contains requests for the Elephant API.\n\nhttps://elephant-api.herokuapp.com/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get list of all elephants",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a70e7bb0-4975-4289-897a-b19ee9b492bf",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://elephant-api.herokuapp.com/elephants",
+					"protocol": "https",
+					"host": [
+						"elephant-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"elephants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get random elephant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8de7e84f-98fe-40fa-bed6-11620c2a4ac1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://elephant-api.herokuapp.com/elephants/random",
+					"protocol": "https",
+					"host": [
+						"elephant-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"elephants",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get elephant by name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58b4ec37-0321-4df1-9793-4bf83acd2684",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://elephant-api.herokuapp.com/elephants/name/Surus",
+					"protocol": "https",
+					"host": [
+						"elephant-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"elephants",
+						"name",
+						"Surus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get elephant by sex",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8c43618-e8fe-43f6-8aa7-d89b48bb36c4",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://elephant-api.herokuapp.com/elephants/sex/Male",
+					"protocol": "https",
+					"host": [
+						"elephant-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"elephants",
+						"sex",
+						"Male"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get elephant by species",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58c1d6fe-a88b-4316-8951-d0840d252f3d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://elephant-api.herokuapp.com/species/Asian",
+					"protocol": "https",
+					"host": [
+						"elephant-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"species",
+						"Asian"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
